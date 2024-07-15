@@ -1,26 +1,24 @@
 * {
-  margin: 5px;
+  margin: 0;
   padding: 0;
-  border: 0;
   box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background-color: #f0f4f8;
 }
 
 header {
   background-color: #ebf3fd;
-  padding: 0px 20px;
+  padding: 10px 20px;
   border-bottom: 1px solid #dbdcf8;
 }
 
 nav {
   display: flex;
-  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
-}
-
-.button {
-  display: flex;
-  gap: 20vh;
-  flex-direction: row;
 }
 
 .logo img {
@@ -28,147 +26,220 @@ nav {
   width: 5vw;
 }
 
-.logo {
-  width: 15vw;
-}
-
 .search-bar {
   flex: 1;
-  margin: 10px 10px;
+  display: flex;
+  justify-content: center;
   position: relative;
 }
 
 .search-bar input {
-  padding: 5px;
-  font-size: 30px;
-  border-radius: 35px;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 20px;
   border: 2px solid #c6c8fe;
-  width: 30vw;
+  width: 40vw;
 }
 
 .search-bar input::placeholder {
   color: #cbcbcf;
 }
 
-nav ul {
+.button ul {
   list-style: none;
   display: flex;
-  gap: 150px;
+  gap: 20px;
 }
 
-nav ul li {
-  flex-grow: 1;
+.button ul li {
+  display: inline;
 }
 
-nav ul li a {
+.button ul li a {
   text-decoration: none;
   color: #333;
-  font-size: 35px;
-  display: block;
+  font-size: 16px;
 }
 
 .hero {
   position: relative;
-  width: 100%;
-  height: 800px;
+  text-align: center;
 }
 
 #hero-slime {
   width: 100%;
-  height: 100%;
+  height: 500px;
+  border: none;
 }
 
 #welcome {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -90%);
+  transform: translate(-50%, -50%);
   color: white;
-  font-size: 36px;
-  font-weight: bold;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   text-align: center;
-  padding: 10px 20px;
-  border-radius: 10px;
+}
+
+#welcome h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
 }
 
 #aeroplan-hero {
-  font-size: 160px;
-  color: rgba(255, 255, 255, 0.816);
+  font-size: 48px;
 }
 
-main {
+.booking {
   padding: 20px;
   background-color: #ebf3fd;
+  text-align: center;
 }
 
-/* Booking Section */
-.booking {
-  margin-top: 100px;
-  font-size: 4rem;
+.booking h1 {
+  font-size: 36px;
+  margin-bottom: 20px;
   color: #333;
-  text-align: center;
-  font-weight: bold;
 }
 
 .booking-options {
   display: flex;
+  justify-content: center;
+  gap: 20px;
   flex-wrap: wrap;
-  justify-content: space-around;
-  margin-top: 50px;
+  margin-bottom: 20px;
 }
 
 .option {
   text-align: center;
-  margin: 20px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.option:hover {
-  transform: scale(1.05);
-  box-shadow: 0 10px 20px #ebf3fd;
-}
-
 .option img {
-  width: 600px;
-  height: 630px;
+  width: 200px;
+  height: 150px;
   object-fit: cover;
-  border-radius: 180px;
+  border-radius: 10px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.3s ease;
 }
 
-.option img:hover {
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-}
-
-/* Option Title */
 .option span {
   display: block;
   margin-top: 10px;
-  font-size: 3rem;
+  font-size: 18px;
   color: #555;
   font-weight: 600;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  .booking {
-    font-size: 2rem;
-    margin-top: 50px;
-  }
+.option:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
 
-  .booking-options {
-    flex-direction: column;
-    align-items: center;
-  }
+.aeroplan {
+  padding: 20px;
+  background-color: #f0f4f8;
+  text-align: center;
+}
 
-  .option img {
-    width: 200px;
-    height: 200px;
-  }
+.aeroplan h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+  color: #333;
+}
 
-  .option span {
-    font-size: 1.2rem;
-  }
+.aeroplan-options {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.login {
+  background-color: #ebf3fd;
+  padding: 20px;
+  text-align: center;
+}
+
+.login form {
+  display: inline-block;
+  text-align: left;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.login form h2 {
+  margin-bottom: 20px;
+}
+
+.login form input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #c6c8fe;
+  border-radius: 5px;
+}
+
+.login form button {
+  width: 100%;
+  padding: 10px;
+  background-color: #3a5a99;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.login form p {
+  margin-top: 10px;
+}
+
+.login form p a {
+  color: #3a5a99;
+  text-decoration: none;
+}
+
+.chat {
+  padding: 20px;
+  text-align: center;
+}
+
+.chatbot {
+  display: inline-block;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  text-align: left;
+}
+
+.chatbot img {
+  width: 50px;
+  height: 50px;
+}
+
+.chatbox {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.chatbox input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #c6c8fe;
+  border-radius: 5px;
+}
+
+.chatbox button {
+  padding: 10px 20px;
+  background-color: #3a5a99;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }

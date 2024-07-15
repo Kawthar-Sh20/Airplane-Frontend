@@ -3,7 +3,51 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard</title>
+    <title>Flight Management</title>
+    <link rel="stylesheet" href="styles.css" />
   </head>
-  <body></body>
+  <body>
+    <header>
+      <nav>
+        <div class="logo">
+          <img src="/assets/images/logo.png" alt="Logo" />
+        </div>
+        <div class="search-bar">
+          <input type="text" placeholder="Search" />
+        </div>
+        <div class="nav-links">
+          <a href="#home">Home</a>
+          <a href="#username">Username</a>
+        </div>
+      </nav>
+    </header>
+    <div class="hero">
+      <main>
+        <aside class="sidebar">
+          <h2>Booked</h2>
+          <ul>
+            <li class="active">Flight</li>
+            <li>Hotel</li>
+            <li>Taxi</li>
+          </ul>
+        </aside>
+        <section class="content">
+          <!-- <h2>Flight</h2> -->
+          <div class="flight-details">
+            <div class="flight-image">
+              <h2>Flight</h2>
+              <img src="/assets/images/flight.png" alt="Flight Image" />
+            </div>
+
+            <div class="details">
+              <p><strong>Flight Number:</strong> 232</p>
+              <p><strong>Status:</strong> In Air</p>
+              <p><strong>From:</strong> Airport 1</p>
+              <p><strong>To:</strong> Airport 2</p>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
 </html>
