@@ -7,7 +7,7 @@
 
 body {
   background-color: #ebf3fd;
-  padding: 0px 30px;
+  padding: 0px 50px;
 }
 
 header {
@@ -60,7 +60,7 @@ nav {
 
 main {
   display: flex;
-  padding: 50px;
+  padding: 100px 0px;
   flex-wrap: wrap;
 }
 
@@ -144,9 +144,9 @@ main {
     width: 60vw;
   }
 
-  main {
-    padding: 20px;
-  }
+  /* main {
+    padding: 20px 0px;
+  } */
 
   .sidebar {
     width: 100%;
