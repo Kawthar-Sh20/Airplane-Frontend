@@ -4,3 +4,8 @@ const getData = async (table) => {
   console.log(data);
   return data;
 };
+
+const registerUser = async (data) => {
+  const { data: response } = await axios.post("http://localhost/api/users", data);
+  return response;
+}
