@@ -6,11 +6,20 @@ body {
   height: 100vh;
   width: 100vw;
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
   background: url('/assets/images/airplane.png');
   background-size: cover;
   background-repeat: no-repeat;
+}
+.logo img {
+  height: 6vh;
+  width: 3vw;
+}
+
+.logo{
+  display: flex;
+  align-items: center;
 }
 
 .container {
@@ -28,8 +37,18 @@ body {
   box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);
   text-align: center;
   width: 300px;
-  background-color: #6094c5;
+  background-color: #275b8b;
   opacity: 80%;;
+}
+
+p, a {
+  color: white;
+  font-size: smaller;
+}
+
+.logo p {
+  color: #ffffff;
+  font-size: 20px;
 }
 
 .login-box h2 {
@@ -79,7 +98,7 @@ button {
   border: none;
   outline: none;
   color: #fff;
-  background-color: #073561;
+  background-color: #99caf9;
   padding: 10px 20px;
   cursor: pointer;
   border-radius: 5px;
