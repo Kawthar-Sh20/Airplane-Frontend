@@ -22,6 +22,18 @@ body {
   align-items: center;
 }
 
+.logo a {
+  color: #ffffff; /* Ensure the text is white */
+  font-size: 20px; /* Match the size of other text in the logo */
+  text-decoration: none; /* Remove underline */
+  margin-left: 10px; /* Space between the image and text */
+}
+
+.logo a:hover {
+  cursor: pointer; /* Show pointer cursor on hover */
+  text-decoration: none; /* No underline on hover */
+}
+
 .form-container {
   display: flex;
   justify-content: center;
@@ -40,15 +52,9 @@ body {
   opacity: 80%;
 }
 
-p,
-a {
+p, a:not(.logo a) {
   color: white;
   font-size: smaller;
-}
-
-.logo p {
-  color: #ffffff;
-  font-size: 20px;
 }
 
 h2 {
