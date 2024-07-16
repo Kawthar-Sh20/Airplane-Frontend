@@ -60,7 +60,7 @@ nav {
 
 main {
   display: flex;
-  padding: 100px 0px;
+  padding: 50px 0;
   flex-wrap: wrap;
 }
 
@@ -110,17 +110,20 @@ main {
 .content h2 {
   font-size: 36px;
   color: #333;
-  margin-left: 20px;
 }
 
-.flight-details {
+.flight-details,
+.hotel-details,
+.taxi-details {
   display: flex;
   align-items: center;
   justify-content: space-around;
   flex-wrap: wrap;
 }
 
-.flight-details iframe {
+.flight-details iframe,
+.hotel-details iframe,
+.taxi-details iframe {
   width: 100%;
   max-width: 300px;
   height: 300px;
@@ -133,7 +136,9 @@ main {
   margin-bottom: 10px;
 }
 
-.flight-image {
+.flight-image,
+.hotel-image,
+.taxi-image {
   display: flex;
   flex-direction: column;
 }
@@ -141,43 +146,43 @@ main {
 /* Responsive Styles */
 @media (max-width: 768px) {
   .search-bar input {
-    width: 60vw;
+      width: 60vw;
   }
-
-  /* main {
-    padding: 20px 0px;
-  } */
 
   .sidebar {
-    width: 100%;
-    margin-bottom: 20px;
+      width: 100%;
+      margin-bottom: 20px;
   }
 
-  /* .content {
-    margin-left: 0;
-  } */
-
-  .flight-details {
-    flex-direction: column;
+  .content {
+      margin-left: 0;
   }
 
-  .flight-details iframe {
-    max-width: 100%;
-    height: auto;
+  .flight-details,
+  .hotel-details,
+  .taxi-details {
+      flex-direction: column;
+  }
+
+  .flight-details iframe,
+  .hotel-details iframe,
+  .taxi-details iframe {
+      max-width: 100%;
+      height: auto;
   }
 }
 
 @media (max-width: 480px) {
   .search-bar input {
-    width: 80vw;
+      width: 80vw;
   }
 
   .nav-links {
-    flex-direction: column;
-    gap: 10px;
+      flex-direction: column;
+      gap: 10px;
   }
 
   .nav-links a {
-    font-size: 14px;
+      font-size: 14px;
   }
 }

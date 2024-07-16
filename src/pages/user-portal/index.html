@@ -1,56 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Flight Management</title>
     <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
+</head>
+<body>
     <header>
-      <nav>
-        <div class="logo">
-          <img src="/assets/images/logo.png" alt="Logo" />
-        </div>
-        <div class="search-bar">
-          <input type="text" placeholder="Search" />
-        </div>
-        <div class="nav-links">
-          <a href="#home">Home</a>
-          <a href="#username">Username</a>
-        </div>
-      </nav>
+        <nav>
+            <div class="logo">
+                <img src="/assets/images/logo.png" alt="Logo" />
+            </div>
+            <div class="search-bar">
+                <input type="text" placeholder="Search" />
+            </div>
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#username">Profile</a>
+            </div>
+        </nav>
     </header>
     <div class="hero">
-      <main>
-        <aside class="sidebar">
-          <h2>Booked</h2>
-          <ul>
-            <li class="active">Flight</li>
-            <li>Hotel</li>
-            <li>Taxi</li>
-          </ul>
-        </aside>
-        <section class="content">
-          <div class="flight-details">
-            <div class="flight-image">
-              <h2>Flight</h2>
-              <iframe
-                src="https://my.spline.design/inair-92829a7660a17a19305c51726a8b6d2f/"
-                frameborder="0"
-                width="100%"
-                height="100%"
-              ></iframe>
-            </div>
-            <div class="details">
-              <p><strong>Flight Number:</strong> 232</p>
-              <p><strong>Status:</strong> In Air</p>
-              <p><strong>From:</strong> Airport 1</p>
-              <p><strong>To:</strong> Airport 2</p>
-            </div>
-          </div>
-        </section>
-      </main>
+        <main>
+            <aside class="sidebar">
+                <h2>Booked</h2>
+                <ul>
+                    <li class="active" data-target="flights">Flight</li>
+                    <li data-target="hotels">Hotel</li>
+                    <li data-target="taxis">Taxi</li>
+                </ul>
+            </aside>
+            <section class="content">
+                <div class="flight-details details-section" id="flights">
+                    <div class="flight-image">
+                        <h2>Flight</h2>
+                        <iframe
+                            src="https://my.spline.design/inair-92829a7660a17a19305c51726a8b6d2f/"
+                            frameborder="0"
+                            width="100%"
+                            height="100%"
+                        ></iframe>
+                    </div>
+                    <div class="details">
+                        <p><strong>Flight Number:</strong> 232</p>
+                        <p><strong>Status:</strong> In Air</p>
+                        <p><strong>From:</strong> Airport 1</p>
+                        <p><strong>To:</strong> Airport 2</p>
+                    </div>
+                </div>
+                <div class="hotel-details details-section" id="hotels" style="display: none;">
+                    <h2>Hotel</h2>
+                    <p><strong>Name:</strong> Hotel Example</p>
+                    <p><strong>Rating:</strong> 5 Stars</p>
+                    <p><strong>Location:</strong> City Center</p>
+                </div>
+                <div class="taxi-details details-section" id="taxis" style="display: none;">
+                    <h2>Taxi</h2>
+                    <p><strong>Service:</strong> Taxi Company Name</p>
+                    <p><strong>Status:</strong> Available</p>
+                    <p><strong>Type:</strong> Sedan</p>
+                </div>
+            </section>
+        </main>
     </div>
-  </body>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const sections = document.querySelectorAll('.details-section');
+            const menuItems = document.querySelectorAll('.sidebar li');
+
+            function switchSection(sectionId) {
+                sections.forEach(section => {
+                    section.style.display = 'none';
+                });
+                document.getElementById(sectionId).style.display = 'block';
+            }
+
+            menuItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    document.querySelector('.sidebar li.active').classList.remove('active');
+                    item.classList.add('active');
+                    switchSection(item.dataset.target);
+                });
+            });
+        });
+    </script>
+</body>
 </html>
