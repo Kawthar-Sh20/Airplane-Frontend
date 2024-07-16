@@ -117,7 +117,7 @@ h2 {
 
 .option {
   text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
 }
 
 .option img {
@@ -126,7 +126,7 @@ h2 {
   object-fit: cover;
   border-radius: 10px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .option span {
@@ -137,9 +137,30 @@ h2 {
   font-weight: 600;
 }
 
-.option:hover {
+.option img:hover {
   transform: scale(1.05);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Hover text styles */
+.option .hover-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.option:hover .hover-text {
+  opacity: 1;
 }
 
 .aeroplan {
@@ -148,12 +169,6 @@ h2 {
   text-align: center;
   margin-top: 200px;
 }
-
-/* .aeroplan h2 {
-  font-size: 36px;
-  margin-bottom: 20px;
-  color: #333;
-} */
 
 .aeroplan-options {
   display: flex;
@@ -165,17 +180,21 @@ h2 {
 
 .contact {
   display: flex;
-  flex-flow: column wrap;
-  align-items: center;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
   background-color: #214d83;
   color: white;
-  padding: 2%;
+  padding: 5%;
   height: 30vh;
+}
+
+.contact h1 {
+  margin: 4vh;
 }
 
 .social-media img {
   width: 1.5vw;
-  margin: 9%;
+  margin: 6%;
   height: 3vh;
 }
 
