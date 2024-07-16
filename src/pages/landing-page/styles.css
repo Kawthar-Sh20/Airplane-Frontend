@@ -6,7 +6,7 @@
 }
 
 body {
-  background-color: #f0f4f8;
+  background-color: #ebf3fd;
 }
 
 header {
@@ -27,10 +27,11 @@ nav {
   width: 5vw;
 }
 
-.logo{
+.logo {
   display: flex;
   align-items: center;
 }
+
 .search-bar {
   position: relative;
 }
@@ -50,7 +51,6 @@ nav {
 .button {
   display: flex;
   align-items: center;
-
 }
 
 .button ul {
@@ -98,9 +98,10 @@ nav {
   padding: 20px;
   background-color: #ebf3fd;
   text-align: center;
+  margin: 200px 0px;
 }
 
-.booking h1 {
+h2 {
   font-size: 36px;
   margin-bottom: 20px;
   color: #333;
@@ -108,10 +109,10 @@ nav {
 
 .booking-options {
   display: flex;
-  justify-content: center;
-  gap: 20px;
+  justify-content: space-between;
+  gap: 40px;
   flex-wrap: wrap;
-  margin-bottom: 20px;
+  margin: 40px;
 }
 
 .option {
@@ -120,8 +121,8 @@ nav {
 }
 
 .option img {
-  width: 200px;
-  height: 150px;
+  width: 300px;
+  height: 200px;
   object-fit: cover;
   border-radius: 10px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
@@ -143,36 +144,141 @@ nav {
 
 .aeroplan {
   padding: 20px;
-  background-color: #f0f4f8;
+  background-color: #ebf3fd;
   text-align: center;
+  margin-top: 200px;
 }
 
-.aeroplan h2 {
+/* .aeroplan h2 {
   font-size: 36px;
   margin-bottom: 20px;
   color: #333;
-}
+} */
 
 .aeroplan-options {
   display: flex;
-  justify-content: center;
-  gap: 20px;
+  justify-content: space-between;
+  gap: 30px;
   flex-wrap: wrap;
-  margin-bottom: 20px;
+  margin: 40px;
 }
 
 .contact {
   display: flex;
-  flex-flow: column wrap;
-  align-items: center;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
   background-color: #214d83;
   color: white;
-  padding: 2%;
+  padding: 5%;
   height: 30vh;
 }
 
+.contact h1 {
+  margin: 4vh;
+}
 .social-media img {
   width: 1.5vw;
-  margin: 9%;
+  margin: 6%;
   height: 3vh;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 1200px) {
+  .booking-options .option img,
+  .aeroplan-options .option img {
+    width: 250px;
+    height: 170px;
+  }
+
+  .search-bar input {
+    width: 50vw;
+  }
+}
+
+@media (max-width: 992px) {
+  .logo img {
+    height: 6vh;
+    width: 6vw;
+  }
+
+  .search-bar input {
+    width: 60vw;
+  }
+
+  .button ul {
+    gap: 10px;
+  }
+
+  .hero #hero-slime {
+    height: 400px;
+  }
+
+  .booking h1,
+  .aeroplan h2 {
+    font-size: 30px;
+  }
+
+  .option img {
+    width: 200px;
+    height: 140px;
+  }
+}
+
+@media (max-width: 768px) {
+  .search-bar input {
+    width: 70vw;
+  }
+
+  .hero #hero-slime {
+    height: 350px;
+  }
+
+  .hero #welcome h3,
+  .hero #welcome h1 {
+    font-size: 20px;
+  }
+
+  .option img {
+    width: 180px;
+    height: 120px;
+  }
+
+  .option span {
+    font-size: 16px;
+  }
+
+  .booking-options,
+  .aeroplan-options {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 576px) {
+  .search-bar input {
+    width: 80vw;
+  }
+
+  .hero #hero-slime {
+    height: 300px;
+  }
+
+  .hero #welcome h3,
+  .hero #welcome h1 {
+    font-size: 18px;
+  }
+
+  .option img {
+    width: 150px;
+    height: 100px;
+  }
+
+  .option span {
+    font-size: 14px;
+  }
+
+  .booking h1,
+  .aeroplan h2 {
+    font-size: 24px;
+  }
 }
