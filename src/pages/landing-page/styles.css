@@ -91,7 +91,8 @@ nav {
 }
 
 #aeroplan-hero {
-  font-size: 48px;
+  font-size: 70px;
+  color: #c6e5fe7e;
 }
 
 .booking {
@@ -121,8 +122,8 @@ h2 {
 }
 
 .option img {
-  width: 400px;
-  height: 300px;
+  /* width: 400px;
+  height: 300px; */
   object-fit: cover;
   border-radius: 10px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
@@ -175,7 +176,7 @@ h2 {
   justify-content: space-between;
   gap: 10px;
   flex-wrap: wrap;
-  margin: 40px;
+  margin: 300px 40px 40px 40px;
 }
 
 .contact {
@@ -297,4 +298,14 @@ h2 {
   .aeroplan h2 {
     font-size: 24px;
   }
+}
+
+.booking img {
+  width: 400px;
+  height: 250px;
+}
+
+.aeroplan img {
+  width: 250px;
+  height: 200px
 }
