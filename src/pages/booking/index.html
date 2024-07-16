@@ -3,7 +3,156 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>booking</title>
+    <title>Booking Page</title>
+    <link rel="stylesheet" href="/src/pages/booking/styles.css" />
   </head>
-  <body></body>
+  <body>
+    <header>
+      <nav>
+        <div class="logo">
+          <img src="/assets/images/logo.png" alt="Logo" />
+          <p>AeroPlan</p>
+        </div>
+        <div class="search-bar">
+          <input type="text" placeholder="Search" />
+        </div>
+        <div class="button">
+          <ul>
+            <li><a href="/src/pages/landing-page/index.html">Home</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <section id="bookings" class="bookings">
+        <h1>Book Your Travel</h1>
+        <div class="booking-options">
+          <div class="option">
+            <h2>Flights</h2>
+            <form id="flight-form">
+              <div class="form-group">
+                <label for="from">From:</label>
+                <select id="from" name="from" required>
+                  <option value="">Select Airport</option>
+                  <option value="Airport 1">Airport 1</option>
+                  <option value="Airport 2">Airport 2</option>
+                  <option value="Airport 3">Airport 3</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="to">To:</label>
+                <select id="to" name="to" required>
+                  <option value="">Select Airport</option>
+                  <option value="Airport 1">Airport 1</option>
+                  <option value="Airport 2">Airport 2</option>
+                  <option value="Airport 3">Airport 3</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="departure-date">Departure Date:</label>
+                <input
+                  type="date"
+                  id="departure-date"
+                  name="departure-date"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="return-date">Return Date:</label>
+                <input type="date" id="return-date" name="return-date" />
+              </div>
+              <button type="submit">Book Flight</button>
+            </form>
+          </div>
+
+          <div class="option">
+            <h2>Hotels</h2>
+            <form id="hotel-form">
+              <div class="form-group">
+                <label for="destination">Destination:</label>
+                <select id="destination" name="destination" required>
+                  <option value="">Select Destination</option>
+                  <option value="City 1">City 1</option>
+                  <option value="City 2">City 2</option>
+                  <option value="City 3">City 3</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="check-in">Check-in Date:</label>
+                <input type="date" id="check-in" name="check-in" required />
+              </div>
+              <div class="form-group">
+                <label for="check-out">Check-out Date:</label>
+                <input type="date" id="check-out" name="check-out" required />
+              </div>
+              <button type="submit">Book Hotel</button>
+            </form>
+          </div>
+
+          <div class="option">
+            <h2>Taxis</h2>
+            <form id="taxi-form">
+              <div class="form-group">
+                <label for="pickup-location">Pickup Location:</label>
+                <select id="pickup-location" name="pickup-location" required>
+                  <option value="">Select Pickup Location</option>
+                  <option value="Location 1">Location 1</option>
+                  <option value="Location 2">Location 2</option>
+                  <option value="Location 3">Location 3</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="dropoff-location">Dropoff Location:</label>
+                <select id="dropoff-location" name="dropoff-location" required>
+                  <option value="">Select Dropoff Location</option>
+                  <option value="Location 1">Location 1</option>
+                  <option value="Location 2">Location 2</option>
+                  <option value="Location 3">Location 3</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="pickup-date">Pickup Date:</label>
+                <input
+                  type="date"
+                  id="pickup-date"
+                  name="pickup-date"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="pickup-time">Pickup Time:</label>
+                <input
+                  type="time"
+                  id="pickup-time"
+                  name="pickup-time"
+                  required
+                />
+              </div>
+              <button type="submit">Book Taxi</button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        <div id="contact" class="contact">
+          <h1>Contact Us</h1>
+          <div class="social-media">
+            <a href="https://www.facebook.com/" target="_blank"
+              ><img src="/assets/images/Facebook.png"
+            /></a>
+            <a href="https://www.instagram.com/" target="_blank"
+              ><img src="/assets/images/Instagram.png"
+            /></a>
+            <a href="https://gmail.com/" target="_blank"
+              ><img src="/assets/images/Gmail.png"
+            /></a>
+            <a href="#phone"><img src="/assets/images/Phone.png" /></a>
+            <p>Travel with us and let the journey inspire awe and wonder!</p>
+          </div>
+        </div>
+      </footer>
+    </main>
+  </body>
 </html>
