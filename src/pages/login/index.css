@@ -12,14 +12,27 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
 }
+
 .logo img {
   height: 6vh;
   width: 3vw;
 }
 
-.logo{
+.logo {
   display: flex;
   align-items: center;
+}
+
+.logo a {
+  color: white; /* Ensures text is white */
+  font-size: 20px; /* Matches the font size of the existing paragraph */
+  text-decoration: none; /* Removes underline from the link */
+  margin-left: 10px; /* Space between logo image and text */
+}
+
+.logo a:hover {
+  cursor: pointer; /* Changes cursor to pointer on hover */
+  text-decoration: none; /* Ensures no underline appears on hover */
 }
 
 .container {
@@ -28,7 +41,6 @@ body {
   align-items: center;
   height: 100%;
   width: 100%;
-  
 }
 
 .login-box {
@@ -38,17 +50,12 @@ body {
   text-align: center;
   width: 300px;
   background-color: #275b8b;
-  opacity: 80%;;
+  opacity: 80%;
 }
 
 p, a {
   color: white;
   font-size: smaller;
-}
-
-.logo p {
-  color: #ffffff;
-  font-size: 20px;
 }
 
 .login-box h2 {
