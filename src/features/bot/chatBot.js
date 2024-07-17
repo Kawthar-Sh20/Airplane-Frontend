@@ -29,8 +29,9 @@ sendButton.addEventListener("click", sendMessage);
 const fetchCityAndRecommend = async (bookingId) => {
   try {
     const cityResponse = await axios.get(
-      `path/to/your/get_city.php?id=${bookingId}`
+      `http://localhost/api/openai?id_flight_booking=${bookingId}`
     );
+    console.log("City Response:", cityResponse.data);
     const cityData = cityResponse.data;
 
     if (cityData.city) {
