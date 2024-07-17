@@ -49,7 +49,7 @@ nav {
 
 .nav-links {
   display: flex;
-  gap: 20px;
+  gap: 5px;
 }
 
 .nav-links a {
@@ -146,43 +146,43 @@ main {
 /* Responsive Styles */
 @media (max-width: 768px) {
   .search-bar input {
-      width: 60vw;
+    width: 60vw;
   }
 
   .sidebar {
-      width: 100%;
-      margin-bottom: 20px;
+    width: 100%;
+    margin-bottom: 20px;
   }
 
   .content {
-      margin-left: 0;
+    margin-left: 0;
   }
 
   .flight-details,
   .hotel-details,
   .taxi-details {
-      flex-direction: column;
+    flex-direction: column;
   }
 
   .flight-details iframe,
   .hotel-details iframe,
   .taxi-details iframe {
-      max-width: 100%;
-      height: auto;
+    max-width: 100%;
+    height: auto;
   }
 }
 
 @media (max-width: 480px) {
   .search-bar input {
-      width: 80vw;
+    width: 80vw;
   }
 
   .nav-links {
-      flex-direction: column;
-      gap: 10px;
+    flex-direction: column;
+    gap: 10px;
   }
 
   .nav-links a {
-      font-size: 14px;
+    font-size: 14px;
   }
 }
