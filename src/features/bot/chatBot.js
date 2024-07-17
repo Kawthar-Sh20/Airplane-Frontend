@@ -2,7 +2,7 @@ const chatInput = document.getElementById("chat-input");
 const sendButton = document.getElementById("send-btn");
 const chatContainer = document.getElementById("chat-container");
 let inputContent = "";
-let canChat = false; // Flag to control if the user can chat with the AI
+let canChat = false;
 let secretKey;
 
 // Fetch configuration using Axios
@@ -31,7 +31,6 @@ const fetchCityAndRecommend = async (bookingId) => {
     const cityResponse = await axios.get(
       `http://localhost/api/openai?id_flight_booking=${bookingId}`
     );
-    console.log("City Response:", cityResponse.data);
     const cityData = cityResponse.data;
 
     if (cityData.city) {
@@ -45,7 +44,7 @@ const fetchCityAndRecommend = async (bookingId) => {
           messages: [
             {
               role: "system",
-              content: `The user booked a flight to ${cityName}.`,
+              content: `The user booked a flight to ${cityName}. Provide a detailed travel plan for their trip for 1 week .`,
             },
           ],
           temperature: 0.7,
@@ -80,7 +79,10 @@ fetchCityAndRecommend(bookingId);
 
 async function sendMessage() {
   if (!canChat) {
-    alert("Please wait for the recommendation before chatting with the AI.");
+    chatContainer.innerHTML += `<div>
+      <h4> Error: </h4>
+      <p> Please wait for the recommendation before chatting with the AI. </p>
+    </div>`;
     return;
   }
 
