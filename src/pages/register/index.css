@@ -35,6 +35,38 @@ body {
 }
 
 .form-container {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  height: 500px;
+}
+
+form h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  text-align: center;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="tel"] {
+  width: 90%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -97,6 +129,7 @@ h2 {
   left: 0;
   color: #092e5f;
   font-size: 16px;
+  margin-top: 10px;
 }
 
 button {
@@ -113,4 +146,13 @@ button {
 
 button:hover {
   background-color: #4f7bdb;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
 }

@@ -5,31 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Register</title>
     <link rel="stylesheet" href="./index.css" />
-</head>
-<body>
-    <div class="logo">
-      <img src="/assets/images/logo1.png" alt="Logo" />
-      <a href="/src/pages/landing-page/index.html" class="logo-text">AeroPlan</a> <!-- Make this clickable -->
-    </div>
+    <style>
+      .error-message {
+        color: red;
+        font-size: 0.8em;
+        margin-top: 5px;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
     <div class="form-container">
-        <div class="register-box">
-          <h2>Register</h2>
-          <form id="registrationForm">
-            <div class="user-box">
-              <input type="text" id="name" name="name" required />
-              <label for="name">Name</label>
-            </div>
-            <div class="user-box">
-              <input type="email" id="email" name="email" required />
-              <label for="email">Email</label>
-            </div>
-            <div class="user-box">
-              <input type="password" id="password" name="password" required />
-              <label for="password">Password</label>
-            </div>
-            <button id="register-form" type="submit">Register</button>
-          </form>
-        </div>
+      <form id="register-form">
+        <h2>Register</h2>
+
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required />
+        <div id="name-error" class="error-message"></div>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required />
+        <div id="email-error" class="error-message"></div>
+
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required />
+        <div id="password-error" class="error-message"></div>
+
+        <label for="phone_number">Phone Number</label>
+        <input type="tel" id="phone_number" name="phone_number" required />
+        <div id="phone-error" class="error-message"></div>
+
+        <button type="submit">Register</button>
+      </form>
     </div>
     <script src="./index.js"></script>
 </body>
