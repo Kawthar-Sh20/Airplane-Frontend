@@ -33,17 +33,23 @@ document.addEventListener("DOMContentLoaded", () => {
         body: JSON.stringify({ email, password }),
       });
 
+      const data = await response.json();
+
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
 
-      const data = await response.json();
-
       if (data.token) {
-        localStorage.setItem("jwtToken", data.token);
-
         const decodedToken = decodeJwtToken(data.token);
-        if (decodedToken && decodedToken.role) {
+        console.log(decodedToken);
+
+        if (decodedToken) {
+          const tokenObject = {
+            token: data.token,
+            userData: decodedToken,
+          };
+          localStorage.setItem("jwtData", JSON.stringify(tokenObject));
+
           redirectBasedOnRole(decodedToken.role);
         } else {
           throw new Error("Invalid token structure");
@@ -110,7 +116,7 @@ function redirectBasedOnRole(role) {
     case "admin":
       window.location.href = "/src/pages/admin-portal/index.html";
       break;
-    case "user":
+    case "customer":
       window.location.href = "/src/pages/user-portal/index.html";
       break;
     default:

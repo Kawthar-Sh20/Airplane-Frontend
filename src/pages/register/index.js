@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const passwordError = document.getElementById("password-error");
   const phoneError = document.getElementById("phone-error");
 
-  registerForm.addEventListener("submit", (e) => {
+  registerForm.addEventListener("submit", async (e) => {
     e.preventDefault();
 
     try {
@@ -55,12 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-      console.log(name);
-      console.log(email);
-      console.log(password);
-      console.log(phoneNumber);
-
-      fetch("http://localhost/api/users", {
+      const response = await fetch("http://localhost/api/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -71,30 +66,34 @@ document.addEventListener("DOMContentLoaded", () => {
           password,
           phone_number: phoneNumber,
         }),
-      })
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error("Network response was not ok");
-          }
-          return response.json();
-        })
-        .then((data) => {
-          console.log(data);
-          if (data.token) {
-            localStorage.setItem("jwtToken", data.token);
+      });
 
-            window.location.href = "/src/pages/user-portal/index.html";
-          } else {
-            throw new Error("No token received");
-          }
-        })
-        .catch((error) => {
-          console.error("There was a problem with the fetch operation:", error);
-          showMessage("Registration failed. Please try again.", "error");
-        });
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "Network response was not ok");
+      }
+
+      if (data.token) {
+        const decodedToken = decodeJwtToken(data.token);
+
+        if (decodedToken) {
+          const tokenObject = {
+            token: data.token,
+            userData: decodedToken,
+          };
+          localStorage.setItem("jwtData", JSON.stringify(tokenObject));
+
+          window.location.href = "/src/pages/user-portal/index.html";
+        } else {
+          throw new Error("Invalid token structure");
+        }
+      } else {
+        throw new Error("No token received");
+      }
     } catch (error) {
-      console.error("An unexpected error occurred:", error);
-      showMessage("An unexpected error occurred. Please try again.", "error");
+      console.error("An unexpected error occurred:", error.message);
+      showMessage(error.message);
     }
   });
 });
@@ -125,4 +124,24 @@ function showMessage(message, type) {
   setTimeout(() => {
     formContainer.removeChild(messageElement);
   }, 5000);
+}
+
+function decodeJwtToken(token) {
+  try {
+    const base64Url = token.split(".")[1];
+    const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
+    const jsonPayload = decodeURIComponent(
+      atob(base64)
+        .split("")
+        .map(function (c) {
+          return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
+        })
+        .join("")
+    );
+
+    return JSON.parse(jsonPayload);
+  } catch (error) {
+    console.error("Error decoding JWT token:", error);
+    return null;
+  }
 }
