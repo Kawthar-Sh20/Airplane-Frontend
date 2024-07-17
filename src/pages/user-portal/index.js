@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   const sections = document.querySelectorAll(".details-section");
   const menuItems = document.querySelectorAll(".sidebar li");
+  const username = document.getElementById("username");
 
   function switchSection(sectionId) {
     sections.forEach((section) => {
@@ -18,24 +19,11 @@ document.addEventListener("DOMContentLoaded", function () {
       loadTaxiBookings();
     }
   }
+  const jwtData = JSON.parse(localStorage.getItem("jwtData"));
+  const token = jwtData.token;
+  const userId = jwtData.userData.user_id;
 
   async function loadUserInfo() {
-    const jwtData = JSON.parse(localStorage.getItem("jwtData"));
-
-    if (
-      !jwtData ||
-      !jwtData.token ||
-      !jwtData.userData ||
-      !jwtData.userData.user_id
-    ) {
-      document.getElementById("user-info").innerHTML =
-        "<p>User not logged in</p>";
-      return;
-    }
-
-    const token = jwtData.token;
-    const userId = jwtData.userData.user_id;
-
     try {
       const { data } = await axios.get(
         `http://localhost/api/users?id=${userId}`,
@@ -48,6 +36,8 @@ document.addEventListener("DOMContentLoaded", function () {
       );
 
       const { name, email, phone_number } = data.data[0];
+
+      username.innerText = name;
 
       document.getElementById("user-info").innerHTML = `
 		  <p><strong>Name:</strong> ${name}</p>
@@ -63,21 +53,6 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   async function loadFlightBookings() {
-    const jwtData = JSON.parse(localStorage.getItem("jwtData"));
-    if (
-      !jwtData ||
-      !jwtData.token ||
-      !jwtData.userData ||
-      !jwtData.userData.user_id
-    ) {
-      document.getElementById("flights").innerHTML =
-        "<p>User not logged in</p>";
-      return;
-    }
-
-    const token = jwtData.token;
-    const userId = jwtData.userData.user_id;
-
     try {
       const { data } = await axios.get(
         `http://localhost/api/flight_bookings?id=${userId}`,
@@ -91,14 +66,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
       const flightDetails = data.data
         .map(
-          (booking) => `
-		  <div class="details">
-			<p><strong>Flight Number:</strong> ${booking.flight_number}</p>
+          (booking) =>
+            `<div class="details">
+			<p><strong>Flight Number:</strong> ${booking.flight_id}</p>
 			<p><strong>Status:</strong> ${booking.status}</p>
-			<p><strong>From:</strong> ${booking.from}</p>
-			<p><strong>To:</strong> ${booking.to}</p>
-		  </div>
-		`
+			<p><strong>City ID:</strong> ${booking.arrival_city_id}</p>
+			<p><strong>Reservation Time:</strong> ${booking.created_at}</p>
+		  </div>`
         )
         .join("");
 
@@ -117,25 +91,11 @@ document.addEventListener("DOMContentLoaded", function () {
     } catch (error) {
       console.error("Error fetching flight bookings:", error);
       document.getElementById("flights").innerHTML =
-        "<p>Error loading flight bookings</p>";
+        "<p>No flight bookings made yet!</p>";
     }
   }
 
   async function loadHotelBookings() {
-    const jwtData = JSON.parse(localStorage.getItem("jwtData"));
-    if (
-      !jwtData ||
-      !jwtData.token ||
-      !jwtData.userData ||
-      !jwtData.userData.user_id
-    ) {
-      document.getElementById("hotels").innerHTML = "<p>User not logged in</p>";
-      return;
-    }
-
-    const token = jwtData.token;
-    const userId = jwtData.userData.user_id;
-
     try {
       const { data } = await axios.get(
         `http://localhost/api/hotel_bookings?id=${userId}`,
@@ -146,14 +106,13 @@ document.addEventListener("DOMContentLoaded", function () {
           },
         }
       );
-
       const hotelDetails = data.data
         .map(
           (booking) => `
 		  <div class="details">
-			<p><strong>Name:</strong> ${booking.name}</p>
-			<p><strong>Rating:</strong> ${booking.rating}</p>
-			<p><strong>Location:</strong> ${booking.location}</p>
+			<p><strong>Hotel number:</strong> ${booking.hotel_id}</p>
+			<p><strong>Status:</strong> ${booking.status}</p>
+			<p><strong>Reservation Date:</strong> ${booking.created_at}</p>
 		  </div>
 		`
         )
@@ -166,25 +125,11 @@ document.addEventListener("DOMContentLoaded", function () {
     } catch (error) {
       console.error("Error fetching hotel bookings:", error);
       document.getElementById("hotels").innerHTML =
-        "<p>Error loading hotel bookings</p>";
+        "<p>No hotel bookings made yet!</p>";
     }
   }
 
   async function loadTaxiBookings() {
-    const jwtData = JSON.parse(localStorage.getItem("jwtData"));
-    if (
-      !jwtData ||
-      !jwtData.token ||
-      !jwtData.userData ||
-      !jwtData.userData.user_id
-    ) {
-      document.getElementById("taxis").innerHTML = "<p>User not logged in</p>";
-      return;
-    }
-
-    const token = jwtData.token;
-    const userId = jwtData.userData.user_id;
-
     try {
       const { data } = await axios.get(
         `http://localhost/api/taxi_bookings?id=${userId}`,
@@ -195,14 +140,15 @@ document.addEventListener("DOMContentLoaded", function () {
           },
         }
       );
+      console.log(data.data[0]);
 
       const taxiDetails = data.data
         .map(
           (booking) => `
 		  <div class="details">
-			<p><strong>Service:</strong> ${booking.service}</p>
+			<p><strong>Taxi ID:</strong> ${booking.taxi_id}</p>
 			<p><strong>Status:</strong> ${booking.status}</p>
-			<p><strong>Type:</strong> ${booking.type}</p>
+			<p><strong>Reservation Date:</strong> ${booking.created_at}</p>
 		  </div>
 		`
         )
@@ -215,7 +161,7 @@ document.addEventListener("DOMContentLoaded", function () {
     } catch (error) {
       console.error("Error fetching taxi bookings:", error);
       document.getElementById("taxis").innerHTML =
-        "<p>Error loading taxi bookings</p>";
+        "<p>No taxi bookings made yet!</p>";
     }
   }
 
