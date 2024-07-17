@@ -1,0 +1,188 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background-color: #ebf3fd;
+  padding: 0px 50px;
+}
+
+header {
+  background-color: #ebf3fd;
+  padding: 10px 20px;
+  border-bottom: 1px solid #dbdcf8;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.logo img {
+  height: 7vh;
+  width: 5vw;
+}
+
+.search-bar {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.search-bar input {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 20px;
+  border: 2px solid #c6c8fe;
+  width: 40vw;
+}
+
+.search-bar input::placeholder {
+  color: #cbcbcf;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #333;
+  font-size: 16px;
+}
+
+main {
+  display: flex;
+  padding: 50px 0;
+  flex-wrap: wrap;
+}
+
+.sidebar {
+  width: 20%;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+
+.sidebar h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #333;
+}
+
+.sidebar ul {
+  list-style: none;
+}
+
+.sidebar li {
+  padding: 10px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.sidebar li.active {
+  background-color: #007bff;
+  color: white;
+  border-radius: 5px;
+}
+
+.sidebar li:not(.active):hover {
+  background-color: #e0e4e8;
+  border-radius: 5px;
+}
+
+.content {
+  flex: 1;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  margin-left: 20px;
+}
+
+.content h2 {
+  font-size: 36px;
+  color: #333;
+}
+
+.flight-details,
+.hotel-details,
+.taxi-details {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.flight-details iframe,
+.hotel-details iframe,
+.taxi-details iframe {
+  width: 100%;
+  max-width: 300px;
+  height: 300px;
+  border-radius: 10px;
+  margin: 20px;
+}
+
+.details p {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.flight-image,
+.hotel-image,
+.taxi-image {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .search-bar input {
+      width: 60vw;
+  }
+
+  .sidebar {
+      width: 100%;
+      margin-bottom: 20px;
+  }
+
+  .content {
+      margin-left: 0;
+  }
+
+  .flight-details,
+  .hotel-details,
+  .taxi-details {
+      flex-direction: column;
+  }
+
+  .flight-details iframe,
+  .hotel-details iframe,
+  .taxi-details iframe {
+      max-width: 100%;
+      height: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .search-bar input {
+      width: 80vw;
+  }
+
+  .nav-links {
+      flex-direction: column;
+      gap: 10px;
+  }
+
+  .nav-links a {
+      font-size: 14px;
+  }
+}

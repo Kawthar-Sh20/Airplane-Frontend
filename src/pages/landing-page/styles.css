@@ -6,7 +6,7 @@
 }
 
 body {
-  background-color: #f0f4f8;
+  background-color: #ebf3fd;
 }
 
 header {
@@ -27,10 +27,11 @@ nav {
   width: 5vw;
 }
 
-.logo{
+.logo {
   display: flex;
   align-items: center;
 }
+
 .search-bar {
   position: relative;
 }
@@ -50,7 +51,6 @@ nav {
 .button {
   display: flex;
   align-items: center;
-
 }
 
 .button ul {
@@ -91,16 +91,18 @@ nav {
 }
 
 #aeroplan-hero {
-  font-size: 48px;
+  font-size: 70px;
+  color: #c6e5fe7e;
 }
 
 .booking {
   padding: 20px;
   background-color: #ebf3fd;
   text-align: center;
+  margin: 200px 0px;
 }
 
-.booking h1 {
+h2 {
   font-size: 36px;
   margin-bottom: 20px;
   color: #333;
@@ -108,24 +110,24 @@ nav {
 
 .booking-options {
   display: flex;
-  justify-content: center;
-  gap: 20px;
+  justify-content: space-between;
+  gap: 30px;
   flex-wrap: wrap;
-  margin-bottom: 20px;
+  margin: 40px;
 }
 
 .option {
   text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
 }
 
 .option img {
-  width: 200px;
-  height: 150px;
+  /* width: 400px;
+  height: 300px; */
   object-fit: cover;
   border-radius: 10px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .option span {
@@ -136,43 +138,174 @@ nav {
   font-weight: 600;
 }
 
-.option:hover {
+.option img:hover {
   transform: scale(1.05);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
-.aeroplan {
-  padding: 20px;
-  background-color: #f0f4f8;
+/* Hover text styles */
+.option .hover-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
   text-align: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  border-radius: 10px;
 }
 
-.aeroplan h2 {
-  font-size: 36px;
-  margin-bottom: 20px;
-  color: #333;
+.option:hover .hover-text {
+  opacity: 1;
+}
+
+.aeroplan {
+  padding: 20px;
+  background-color: #ebf3fd;
+  text-align: center;
+  margin-top: 200px;
 }
 
 .aeroplan-options {
   display: flex;
-  justify-content: center;
-  gap: 20px;
+  justify-content: space-between;
+  gap: 10px;
   flex-wrap: wrap;
-  margin-bottom: 20px;
+  margin: 300px 40px 40px 40px;
 }
 
 .contact {
   display: flex;
-  flex-flow: column wrap;
-  align-items: center;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
   background-color: #214d83;
   color: white;
-  padding: 2%;
+  padding: 5%;
   height: 30vh;
+}
+
+.contact h1 {
+  margin: 4vh;
 }
 
 .social-media img {
   width: 1.5vw;
-  margin: 9%;
+  margin: 6%;
   height: 3vh;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 1200px) {
+  .booking-options .option img,
+  .aeroplan-options .option img {
+    width: 250px;
+    height: 170px;
+  }
+
+  .search-bar input {
+    width: 50vw;
+  }
+}
+
+@media (max-width: 992px) {
+  .logo img {
+    height: 6vh;
+    width: 6vw;
+  }
+
+  .search-bar input {
+    width: 60vw;
+  }
+
+  .button ul {
+    gap: 10px;
+  }
+
+  .hero #hero-slime {
+    height: 400px;
+  }
+
+  .booking h1,
+  .aeroplan h2 {
+    font-size: 30px;
+  }
+
+  .option img {
+    width: 200px;
+    height: 140px;
+  }
+}
+
+@media (max-width: 768px) {
+  .search-bar input {
+    width: 70vw;
+  }
+
+  .hero #hero-slime {
+    height: 350px;
+  }
+
+  .hero #welcome h3,
+  .hero #welcome h1 {
+    font-size: 20px;
+  }
+
+  .option img {
+    width: 180px;
+    height: 120px;
+  }
+
+  .option span {
+    font-size: 16px;
+  }
+
+  .booking-options,
+  .aeroplan-options {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 576px) {
+  .search-bar input {
+    width: 80vw;
+  }
+
+  .hero #hero-slime {
+    height: 300px;
+  }
+
+  .hero #welcome h3,
+  .hero #welcome h1 {
+    font-size: 18px;
+  }
+
+  .option img {
+    width: 200px;
+    height: 150px;
+  }
+
+  .option span {
+    font-size: 14px;
+  }
+
+  .booking h1,
+  .aeroplan h2 {
+    font-size: 24px;
+  }
+}
+
+.booking img {
+  width: 400px;
+  height: 250px;
+}
+
+.aeroplan img {
+  width: 250px;
+  height: 200px
 }
