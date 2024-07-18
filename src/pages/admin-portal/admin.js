@@ -18,13 +18,13 @@ function loadContent(type) {
         case 'users':
             tableContent = getTableTemplate('Users', 'userTableBody', 'userForm', ['Name', 'Email', 'Phone Number', 'Role']);
             break;
-        case 'flightBookings':
+        case 'flight_bookings':
             tableContent = getTableTemplate('Flight Bookings', 'flightBookingTableBody', 'flightBookingForm', ['User ID', 'Flight ID', 'Status']);
             break;
-        case 'hotelBookings':
+        case 'hotel_bookings':
             tableContent = getTableTemplate('Hotel Bookings', 'hotelBookingTableBody', 'hotelBookingForm', ['User ID', 'Hotel ID', 'Status']);
             break;
-        case 'taxiBookings':
+        case 'taxi_bookings':
             tableContent = getTableTemplate('Taxi Bookings', 'taxiBookingTableBody', 'taxiBookingForm', ['User ID', 'Taxi ID', 'Status']);
             break;
         case 'cities':
@@ -67,36 +67,20 @@ function getTableTemplate(title, tableBodyId, formId, fields) {
 }
 
 function fetchData(type) {
-    // This is where you would fetch data from the server
-    // Example: fetch(`api/${type}`).then(response => response.json()).then(data => renderTable(type, data))
-
-    const dummyData = getDummyData(type);
-    renderTable(type, dummyData);
-}
-
-function getDummyData(type) {
-    switch (type) {
-        case 'airports':
-            return [{ id_airport: 1, city_id: 1, name: "Airport 1", code: "AP1" }];
-        case 'flights':
-            return [{ id_flight: 1, flight_number: "FL123", departure_airport_id: 1, arrival_airport_id: 2, departure_time: "2024-01-01 10:00", arrival_time: "2024-01-01 12:00", seat_capacity: 100 }];
-        case 'hotels':
-            return [{ id_hotel: 1, city_id: 1, name: "Hotel 1", description: "A nice hotel", rating: 5, number_of_rooms: 50 }];
-        case 'taxis':
-            return [{ id_taxi: 1, city_id: 1 }];
-        case 'users':
-            return [{ id_user: 1, name: "User 1", email: "user1@example.com", phone_number: "1234567890", role: "customer" }];
-        case 'flightBookings':
-            return [{ id_flight_booking: 1, user_id: 1, flight_id: 1, status: "confirmed" }];
-        case 'hotelBookings':
-            return [{ id_hotel_booking: 1, user_id: 1, hotel_id: 1, status: "confirmed" }];
-        case 'taxiBookings':
-            return [{ id_taxi_booking: 1, user_id: 1, taxi_id: 1, status: "confirmed" }];
-        case 'cities':
-            return [{ id_city: 1, name: "City 1", country: "Country 1" }];
-        default:
-            return [];
-    }
+    
+    fetch(`http://localhost/api/${type}`)
+    .then(response => {
+        if (response.status != 200) {
+            throw new Error('Network response was not ok ' + data.statusText);
+        }
+        return response.json();
+    })
+    .then(data => {
+        renderTable(type, data.data);
+    })
+    .catch(error => {
+        console.error('There was a problem with the fetch operation:', error);
+    });
 }
 
 function renderTable(type, data) {
@@ -117,11 +101,11 @@ function getTableBodyId(type) {
             return 'taxiTableBody';
         case 'users':
             return 'userTableBody';
-        case 'flightBookings':
+        case 'flight_bookings':
             return 'flightBookingTableBody';
-        case 'hotelBookings':
+        case 'hotel_bookings':
             return 'hotelBookingTableBody';
-        case 'taxiBookings':
+        case 'taxi_bookings':
             return 'taxiBookingTableBody';
         case 'cities':
             return 'cityTableBody';
@@ -141,7 +125,8 @@ function getTableRow(type, item) {
                     <td class="actions">
                         <button class="edit" onclick="editItem('${type}', ${item.id_airport})">Edit</button>
                         <button class="delete" onclick="deleteItem('${type}', ${item.id_airport})">Delete</button>
-                    </td>
+                    </td>\
+
                 </tr>
             `;
         case 'flights':
@@ -196,7 +181,7 @@ function getTableRow(type, item) {
                     </td>
                 </tr>
             `;
-        case 'flightBookings':
+        case 'flight_bookings':
             return `
                 <tr>
                     <td>${item.user_id}</td>
@@ -208,7 +193,7 @@ function getTableRow(type, item) {
                     </td>
                 </tr>
             `;
-        case 'hotelBookings':
+        case 'hotel_bookings':
             return `
                 <tr>
                     <td>${item.user_id}</td>
@@ -220,7 +205,7 @@ function getTableRow(type, item) {
                     </td>
                 </tr>
             `;
-        case 'taxiBookings':
+        case 'taxi_bookings':
             return `
                 <tr>
                     <td>${item.user_id}</td>
@@ -256,7 +241,7 @@ function showForm(formId) {
 function saveItem(event, formId) {
     event.preventDefault();
 
-    const form = document.getElementById(formId);
+    const form = document.getElementById(formId).getElementsByTagName("form")[0];
     const formData = new FormData(form);
     const itemData = {};
 
@@ -264,9 +249,7 @@ function saveItem(event, formId) {
         itemData[key] = value;
     });
 
-    console.log(itemData);
-    // This is where you would send the form data to the server
-    // Example: fetch('api/saveItem', { method: 'POST', body: JSON.stringify(itemData) })
+    fetch(`http://localhost/api/${type}`, { method: 'POST', body: JSON.stringify(itemData) })
 
     form.reset();
     form.style.display = 'none';
@@ -313,11 +296,11 @@ function getFormId(type) {
             return 'taxiForm';
         case 'users':
             return 'userForm';
-        case 'flightBookings':
+        case 'flight_bookings':
             return 'flightBookingForm';
-        case 'hotelBookings':
+        case 'hotel_bookings':
             return 'hotelBookingForm';
-        case 'taxiBookings':
+        case 'taxi_bookings':
             return 'taxiBookingForm';
         case 'cities':
             return 'cityForm';
