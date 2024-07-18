@@ -66,7 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
     try {
       // Send POST request to flight_booking table
       const flightResponse = await axios.post(
-        "http://localhost/api/flight_booking",
+        "http://localhost/api/flight_bookings",
         flightData
       );
       console.log("Flight booking response from server:", flightResponse.data);
